@@ -1,6 +1,5 @@
 "use client";
 
-import SocialLogin from "@/components/SocialLogin";
 import { signIn } from "next-auth/react";
 import { useForm } from "react-hook-form";
 
@@ -13,7 +12,7 @@ export default function Login() {
       redirect: true,
       email: data.email,
       password: data.password,
-      // callbackUrl: "/", // redirect after login
+      callbackUrl: "/", // redirect after login
     });
   };
 
@@ -22,16 +21,16 @@ export default function Login() {
 
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className="bg-white p-8 rounded-lg shadow-md w-full max-w-md space-y-4"
+        className="bg-white p-8 rounded-lg shadow-md w-full max-w-md space-y-4 "
       >
         <h2 className="text-2xl font-bold text-gray-800">Login</h2>
 
         <div>
-          <label className="block text-sm font-medium text-gray-700">Email</label>
+          <label className="block text-sm font-medium text-gray-700 ">Email</label>
           <input
             type="email"
             {...register("email", { required: true })}
-            className="mt-1 block w-full rounded-lg border-gray-300 px-4 py-2 focus:ring focus:border-blue-500"
+            className="mt-1 block w-full rounded-lg border-gray-300 px-4 py-2 focus:ring focus:border-blue-500 border-1 "
           />
         </div>
 
@@ -40,7 +39,7 @@ export default function Login() {
           <input
             type="password"
             {...register("password", { required: true })}
-            className="mt-1 block w-full rounded-lg border-gray-300 px-4 py-2 focus:ring focus:border-blue-500"
+            className="mt-1 block w-full rounded-lg border-gray-300 px-4 py-2 focus:ring focus:border-blue-500 border-1 "
           />
         </div>
 
@@ -51,7 +50,6 @@ export default function Login() {
 
         
       </form>
-      <SocialLogin></SocialLogin>
     </div>
   );
 }

@@ -4,6 +4,8 @@ import "./globals.css";
 import Navbar from "@/components/Navbar";
 import { SessionProvider } from "next-auth/react";
 import Footer from "@/components/Footer";
+import NextAuthSessionProvider from "@/Providers/NextAuthSessionProvider";
+import { ToastContainer } from "react-toastify";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -23,13 +25,16 @@ const geistMono = Geist_Mono({
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className="bg-gray-50">
-        <Navbar />
-        <SessionProvider >
-          <main className="pt-16">{children}</main> {/* pt-16 to avoid navbar overlap */}
-        </SessionProvider>
-        <Footer></Footer>
-      </body>
+      <NextAuthSessionProvider>
+        <body className="bg-gray-50">
+          <Navbar />
+          <SessionProvider >
+            <main className="pt-16 text-black">{children}</main> {/* pt-16 to avoid navbar overlap */}
+          </SessionProvider>
+          <Footer></Footer>
+        </body>
+        <ToastContainer></ToastContainer>
+      </NextAuthSessionProvider>
     </html>
   );
 }

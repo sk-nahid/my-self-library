@@ -1,14 +1,14 @@
 "use client"
-import { useSession } from 'next-auth/react'
-import React from 'react'
+import { useSession } from 'next-auth/react';
+import React from 'react';
 
-export default function ProfileInfo() {
+const ProfileInfo = () => {
+    const session = useSession()
+    return (
+        <div>
+            <p>{ JSON.stringify(session)}</p>
+        </div>
+    );
+};
 
-    const { data: session } = useSession();
-    if (!session) {
-        return <p>no session data found</p>
-    }
-  return (
-      <div>{ session.user.email}</div>
-  )
-}
+export default ProfileInfo;

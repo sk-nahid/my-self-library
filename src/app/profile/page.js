@@ -1,13 +1,11 @@
 "use clint"
 import ProfileInfo from '@/components/ProfileInfo'
-import { useSession } from 'next-auth/react'
 import React from 'react'
 
 
 
 
-export default function page() {
-
+export default async function page() {
 
     return (
         <div>
